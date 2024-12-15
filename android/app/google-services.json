@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "626270812392",
+    "project_id": "residencia-8def7",
+    "storage_bucket": "residencia-8def7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626270812392:android:decb483ca4f6fa072ab15d",
+        "android_client_info": {
+          "package_name": "com.residencia.buenos_habitos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626270812392-imknni1gol6ac59mo8im0fmiomoevsas.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsMrrAd18wh49NAfm3rERif6di9di8Zc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626270812392-imknni1gol6ac59mo8im0fmiomoevsas.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "626270812392-loaic1rf56ch6bievvur68gj0di1i9hq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.buenosHabitos"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
