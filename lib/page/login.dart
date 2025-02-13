@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (role == 'admin') {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const ConfirmationRegistroAdminScreen()),
+        MaterialPageRoute(builder: (context) => const ConfirmationAdminScreen()),
       );
     } else {
       Navigator.pushReplacement(

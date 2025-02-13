@@ -2,8 +2,8 @@ import 'package:buenos_habitos/page/principal-admin.dart';
 import 'package:flutter/material.dart';
 import 'login.dart';// Importa la pantalla a la que deseas redirigir
 
-class ConfirmationAdminScreen extends StatelessWidget {
-  const ConfirmationAdminScreen({super.key});
+class ConfirmationRegistroAdminScreen extends StatelessWidget {
+  const ConfirmationRegistroAdminScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class ConfirmationAdminScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const Text(
-              '¡Sesión exitosa!',
+              '¡Registro exitoso!',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,

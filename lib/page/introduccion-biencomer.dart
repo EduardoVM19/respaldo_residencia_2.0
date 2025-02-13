@@ -43,7 +43,7 @@ class IntroductionScreen extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 const Text(
-                  'NOMBRE',
+                  'Introducción',
                   style: TextStyle(
                     fontSize: 40,
                     color: Colors.black,

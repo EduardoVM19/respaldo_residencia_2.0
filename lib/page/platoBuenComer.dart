@@ -44,41 +44,41 @@ class PlatoScreen extends StatefulWidget {
 
 class _PlatoScreenState extends State<PlatoScreen> {
   List<Ingredient> ingredients = [
-    Ingredient(name: 'zanahoria', type: 'verdura'),
-    Ingredient(name: 'chile_morron', type: 'verdura'),
-    Ingredient(name: 'pepino', type: 'verdura'),
-    Ingredient(name: 'nopal', type: 'verdura'),
-    Ingredient(name: 'brocoli', type: 'verdura'),
-    Ingredient(name: 'aguacate', type: 'verdura'),
-    Ingredient(name: 'cebolla', type: 'verdura'),
-    Ingredient(name: 'lechuga', type: 'verdura'),
-    Ingredient(name: 'repollo', type: 'verdura'),
-    Ingredient(name: 'tomate', type: 'verdura'),
-    Ingredient(name: 'chile', type: 'verdura'),
-    Ingredient(name: 'apio', type: 'verdura'),
-    Ingredient(name: 'maiz', type: 'pan'),
-    Ingredient(name: 'pan', type: 'pan'),
-    Ingredient(name: 'frijol', type: 'pan'),
-    Ingredient(name: 'caldo', type: 'pan'),
-    Ingredient(name: 'cereal', type: 'pan'),
-    Ingredient(name: 'tortilla', type: 'pan'),
-    Ingredient(name: 'arroz', type: 'pan'),
-    Ingredient(name: 'harina', type: 'pan'),
-    Ingredient(name: 'pasta', type: 'pan'),
-    Ingredient(name: 'queso', type: 'carne'),
-    Ingredient(name: 'pescado', type: 'carne'),
-    Ingredient(name: 'pollo', type: 'carne'),
-    Ingredient(name: 'huevo', type: 'carne'),
-    Ingredient(name: 'cacahuate', type: 'carne'),
-    Ingredient(name: 'res', type: 'carne'),
-    Ingredient(name: 'uva', type: 'fruta'),
-    Ingredient(name: 'sandia', type: 'fruta'),
-    Ingredient(name: 'manzana', type: 'fruta'),
-    Ingredient(name: 'naranja', type: 'fruta'),
-    Ingredient(name: 'piña', type: 'fruta'),
-    Ingredient(name: 'mango', type: 'fruta'),
-    Ingredient(name: 'pera', type: 'fruta'),
-    Ingredient(name: 'platano', type: 'fruta'),
+    Ingredient(name: 'zanahoria', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'chile_morron', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'pepino', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'nopal', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'brocoli', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'aguacate', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'cebolla', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'lechuga', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'repollo', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'tomate', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'chile', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'apio', type: 'verdura', portion: '50g'),
+    Ingredient(name: 'maiz', type: 'pan', portion: '50g'),
+    Ingredient(name: 'pan', type: 'pan', portion: '50g'),
+    Ingredient(name: 'frijol', type: 'pan', portion: '50g'),
+    Ingredient(name: 'caldo', type: 'pan', portion: '50g'),
+    Ingredient(name: 'cereal', type: 'pan', portion: '50g'),
+    Ingredient(name: 'tortilla', type: 'pan', portion: '50g'),
+    Ingredient(name: 'arroz', type: 'pan', portion: '50g'),
+    Ingredient(name: 'harina', type: 'pan', portion: '50g'),
+    Ingredient(name: 'pasta', type: 'pan', portion: '50g'),
+    Ingredient(name: 'queso', type: 'carne', portion: '50g'),
+    Ingredient(name: 'pescado', type: 'carne', portion: '50g'),
+    Ingredient(name: 'pollo', type: 'carne', portion: '50g'),
+    Ingredient(name: 'huevo', type: 'carne', portion: '50g'),
+    Ingredient(name: 'cacahuate', type: 'carne', portion: '50g'),
+    Ingredient(name: 'res', type: 'carne', portion: '50g'),
+    Ingredient(name: 'uva', type: 'fruta', portion: '50g'),
+    Ingredient(name: 'sandia', type: 'fruta', portion: '50g'),
+    Ingredient(name: 'manzana', type: 'fruta', portion: '50g'),
+    Ingredient(name: 'naranja', type: 'fruta', portion: '50g'),
+    Ingredient(name: 'piña', type: 'fruta', portion: '50g'),
+    Ingredient(name: 'mango', type: 'fruta', portion: '50g'),
+    Ingredient(name: 'pera', type: 'fruta', portion: '50g'),
+    Ingredient(name: 'platano', type: 'fruta', portion: '50g'),
   ];
 
   final List<Ingredient> selectedIngredients = [];
@@ -289,7 +289,7 @@ class _PlatoScreenState extends State<PlatoScreen> {
                         ingredient.name,
                         textAlign: TextAlign.center,
                         style: const TextStyle(fontSize: 12),
-                      ),
+                      ),                      
                     ],
                   ),
                   feedback: Material(
@@ -360,42 +360,52 @@ class _PlatoScreenState extends State<PlatoScreen> {
                     alignment: WrapAlignment.center,
                     spacing: 8.0,
                     runSpacing: 8.0,
-                    children: selectedIngredients
-                        .map<Widget>((ingredient) => Draggable<Ingredient>(
-                              data: ingredient,
-                              onDragCompleted: () {
-                                // Si se suelta fuera, se elimina del plato
+                    children: selectedIngredients.map<Widget>((ingredient) {
+                      return Draggable<Ingredient>(
+                        data: ingredient,
+                        onDragCompleted: () {
+                          // Si se suelta fuera, se elimina del plato
+                          removeIngredientFromPlate(ingredient);
+                        },
+                        child: Column(
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                // Permitir eliminar ingrediente al presionar
                                 removeIngredientFromPlate(ingredient);
                               },
-                              child: GestureDetector(
-                                onTap: () {
-                                  // Permitir eliminar ingrediente al presionar
-                                  removeIngredientFromPlate(ingredient);
-                                },
-                                child: Image.asset(
-                                  'assets/imagenes/${ingredient.name.toLowerCase()}.png',
-                                  height: 60,
-                                  width: 60,
-                                ),
+                              child: Image.asset(
+                                'assets/imagenes/${ingredient.name.toLowerCase()}.png',
+                                height: 60,
+                                width: 60,
                               ),
-                              feedback: Material(
-                                color: Colors.transparent,
-                                child: SizedBox(
-                                  height: 60,
-                                  width: 60,
-                                  child: Image.asset(
-                                    'assets/imagenes/${ingredient.name.toLowerCase()}.png',
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
-                              ),
-                            ))
-                        .toList(),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              ingredient.portion, // Mostrar la porción
+                              style: const TextStyle(fontSize: 12),
+                            ),
+                          ],
+                        ),
+                        feedback: Material(
+                          color: Colors.transparent,
+                          child: SizedBox(
+                            height: 60,
+                            width: 60,
+                            child: Image.asset(
+                              'assets/imagenes/${ingredient.name.toLowerCase()}.png',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
                   ),
                 ),
               );
             },
           ),
+
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: ElevatedButton(
@@ -412,6 +422,7 @@ class _PlatoScreenState extends State<PlatoScreen> {
 class Ingredient {
   final String name;
   final String type;
+  final String portion;
 
-  Ingredient({required this.name, required this.type});
+  Ingredient({required this.name, required this.type, required this.portion});
 }
